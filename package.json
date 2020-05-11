@@ -1,0 +1,32 @@
+{
+  "name": "pm_back",
+  "version": "1.0.0",
+  "description": "personality meetings backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon --exec babel-node src/test/testMode.js",
+    "start": "nodemon --exec babel-node src/server.js",
+    "build": "babel src -d build",
+    "postbuild": "npx copy src/api/**/*.graphql ./build/api"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/runtime": "^7.9.2",
+    "axios": "^0.19.2",
+    "copy": "^0.3.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "graphql-tools": "^5.0.0",
+    "graphql-yoga": "^1.18.3",
+    "merge-graphql-schemas": "^1.7.8"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "nodemon": "^2.0.3"
+  }
+}
