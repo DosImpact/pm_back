@@ -1,5 +1,3 @@
-import naver from "../crwaling/naver";
-
 let fetchCNT = 0;
 
 export default {
@@ -14,7 +12,6 @@ export default {
       ` HELLO 4 : id : ${args.id} yourname: ${
         args.name
       } your infos :  ${JSON.stringify(args.info)}`,
-    naverDust: async () => naver(),
     hello5: (_, args) => {
       const { id, name, age, sex } = args;
       let sex_res = "";

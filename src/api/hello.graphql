@@ -11,5 +11,4 @@ type Query {
   hello3(id: Int): String!
   hello4(id: Int, name: String, info: [String!]!): String!
   hello5(id: Int, name: String!, age: Int!, sex: String): person!
-  naverDust: String!
 }
