@@ -9,4 +9,10 @@ type Mutation {
     avatar: String
     bio: String
   ): Boolean!
+  editUser(
+    avatar: String
+    firstName: String
+    lastName: String
+    bio: String
+  ): Boolean!
 }

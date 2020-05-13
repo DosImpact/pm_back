@@ -24,5 +24,19 @@ export default {
         return false;
       }
     },
+    editUser: async (_, args, { request, isAuth }) => {
+      isAuth(request);
+      const user = request.user;
+      const { avatar, firstName, lastName, bio } = args;
+      try {
+        const res = await prisma.updateUser({
+          where: { id: user.id },
+          data: { avatar, firstName, lastName, bio },
+        });
+        return true;
+      } catch (error) {
+        return false;
+      }
+    },
   },
 };
