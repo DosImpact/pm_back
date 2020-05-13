@@ -44,6 +44,9 @@ npm install jsonwebtoken
 - 이렇게 된성된 자체 미들웨어가 탑재된 passport를 express 미들웨어에 탑재한다.
 - 결과는 req 에 넣어줘.
 
+- 시크릿 키는
+  [https://randomkeygen.com/](https://randomkeygen.com/) 을 참조
+
 1. passport.js 기본설정
 
 ```

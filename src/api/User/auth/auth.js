@@ -1,6 +1,13 @@
 import { prisma } from "../../../../generated/prisma-client";
+import { generateToken } from "../../../utils";
 
 export default {
+  Query: {
+    isAuthed: async (_, args, argss) => {
+      console.log(argss);
+      return false;
+    },
+  },
   Mutation: {
     confirmSecret: async (_, args) => {
       const { email, secret } = args;
@@ -8,7 +15,7 @@ export default {
       if (existUser) {
         const LS = await prisma.user({ email });
         if (LS.loginSecret === secret) {
-          return "PUBLIC_TMP_KEY";
+          return generateToken(LS.id);
         }
         throw Error("wrong key answer");
       } else {
