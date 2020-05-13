@@ -3,9 +3,13 @@ import { generateToken } from "../../../utils";
 
 export default {
   Query: {
-    isAuthed: async (_, args, argss) => {
-      console.log(argss);
-      return false;
+    isAuthed: async (_, args, { request, isAuth }) => {
+      try {
+        const res = isAuth(request);
+        return res;
+      } catch (error) {
+        return false;
+      }
     },
   },
   Mutation: {

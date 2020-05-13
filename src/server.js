@@ -6,11 +6,13 @@ import logger from "morgan";
 import schema from "./scheme";
 import cors from "cors";
 
+import { isAuthenticated as isAuth } from "./middlewares";
+
 const PORT = process.env.PORT || 4000;
 
 const server = new GraphQLServer({
   schema,
-  context: ({ request }) => ({ request }),
+  context: ({ request }) => ({ request, isAuth }),
 });
 
 server.express.use(cors());
