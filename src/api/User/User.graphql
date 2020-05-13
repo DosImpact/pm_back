@@ -1,0 +1,12 @@
+type Query {
+  allUsers: [User!]!
+}
+
+type Mutation {
+  createAccount(
+    name: String!
+    email: String!
+    avatar: String
+    bio: String
+  ): Boolean!
+}

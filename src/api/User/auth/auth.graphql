@@ -1,0 +1,5 @@
+type Mutation {
+  confirmSecret(email: String!, secret: String!): String!
+  requestSecret(email: String!): String!
+  requsetSecretEmail(email: String!): Boolean!
+}

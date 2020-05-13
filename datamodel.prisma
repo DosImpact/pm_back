@@ -1,0 +1,87 @@
+type User {
+  id: ID! @id
+  name: String! @unique
+  email: String! @unique
+  avatar: String  @default(value:"")
+  fisrtName: String @default(value:"")
+  lastName : String @default(value:"")
+  bio: String @default(value:"")
+  loginSecret : String @default(value:"")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+
+  following: [User!]! @relation(name:"FollowRelation")
+  followers: [User!]! @relation(name:"FollowRelation")
+  posts: [Post!]! @relation(name:"PostsOfUser", onDelete: CASCADE)
+  likes: [Like!]! @relation(name:"LikesOfUser", onDelete:CASCADE)
+  comments: [Comment!]! @relation(name:"CommentsOfUser", onDelete:CASCADE)
+  rooms: [Room!]! @relation(name:"RoomsOfUsers")
+
+}
+
+type Post{
+  id: ID! @id
+  location: String
+  caption: String!
+
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+
+  user: User! @relation(name:"PostsOfUser")
+  likes: [Like!]! @relation(name:"LikesOfPost", onDelete:CASCADE)
+  comments: [Comment!]! @relation(name:"CommentsOfPost", onDelete:CASCADE)
+  Files : [File!]! @relation(name:"FilesOfPost",onDelete:CASCADE)
+}
+type Like{
+  id: ID! @id
+
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+
+  user: User! @relation(name:"LikesOfUser")
+  post: Post! @relation(name:"LikesOfPost")
+}
+
+type Comment{
+  id: ID! @id
+  text: String!
+
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+
+  user: User! @relation(name:"CommentsOfUser")
+  post: Post! @relation(name:"CommentsOfPost")
+}
+
+type File{
+  id: ID! @id
+  url: String!
+
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+
+  post : Post! @relation(name:"FilesOfPost")
+}
+
+type Room{
+  id: ID! @id
+  name: String! @unique
+
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+
+  users: [User!]! @relation(name:"RoomsOfUsers")
+  message: [Message!]! @relation(name:"MessagesOfRoom",onDelete:CASCADE)
+}
+type Message{
+  id: ID! @id
+  text: String!
+
+
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+
+  rooms: Room! @relation(name:"MessagesOfRoom")
+  from: User! @relation(name:"From")
+  to: User! @relation(name:"To")
+}
