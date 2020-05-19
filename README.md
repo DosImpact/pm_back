@@ -1,13 +1,14 @@
 # pm_back
 
-# 이슈
-
-##
+# multer 부분
 
 ```js
-이건 왜 설치했지?
-- yarn add prisma-client-lib
+npm install --save multer
+
+
 ```
+
+# 이슈
 
 ```js
 prisma.yml 의 데이터베이스 엔드포인트가 git에 노출되는 현상.
