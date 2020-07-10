@@ -24,10 +24,7 @@ yarn-error.log*
 
 /generated
 
-.env
+# .env
 
 # must change when production LEVEL
-prisma.yml
-
-/public
-/upload
+# prisma.yml
